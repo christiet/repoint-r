@@ -20,7 +20,7 @@ Contributors:
 	<name>RCP Parent</name>
 
 	<properties>
-		<tycho-version>2.7.5</tycho-version>
+		<tycho-version>4.0.4</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -30,7 +30,7 @@ Contributors:
 		<module>com.documentum.feature</module>
 		<module>com.documentum.dfc</module>
 		<module>com.emc.repoint.scripts</module>
-		<module>eclipse-2020-06</module>
+		<module>eclipse-2023-06</module>
 	</modules>
 
 	<build>
@@ -49,7 +49,7 @@ Contributors:
 					<target>
 						<artifact>
 							<groupId>repoint</groupId>
-							<artifactId>eclipse-2020-06</artifactId>
+							<artifactId>eclipse-2023-06</artifactId>
 							<version>1.0.0-SNAPSHOT</version>
 						</artifact>
 					</target>

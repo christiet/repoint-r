@@ -53,8 +53,9 @@ import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.TableTree;
-import org.eclipse.swt.custom.TableTreeItem;
+import org.eclipse.swt.widgets.Tree;
+import org.eclipse.swt.widgets.TreeColumn;
+import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swt.dnd.Clipboard;
 import org.eclipse.swt.dnd.TextTransfer;
 import org.eclipse.swt.dnd.Transfer;
@@ -93,7 +94,7 @@ public class PropertiesView extends ViewPart {
 	/**
 	 * the table used to display the properties.
 	 */
-	protected TableTree propTable = null;
+	protected Tree propTable = null;
 
 	/**
 	 * Text box used to enter object id.
@@ -393,30 +394,28 @@ public class PropertiesView extends ViewPart {
 			return;
 		}
 
-		// /Table tree is used to maintain backwards compatibility with
-		// Eclipse 3.0
-		propTable = new TableTree(propComposite, SWT.H_SCROLL | SWT.V_SCROLL
+		// Tree with columns replaces deprecated TableTree
+		propTable = new Tree(propComposite, SWT.H_SCROLL | SWT.V_SCROLL
 				| SWT.FULL_SELECTION | SWT.MULTI);
-		Table table = propTable.getTable();
-		table.setLinesVisible(true);
-		table.setHeaderVisible(true);
+		propTable.setLinesVisible(true);
+		propTable.setHeaderVisible(true);
 
-		TableColumn nameCol = new TableColumn(table, SWT.LEFT, 0);
+		TreeColumn nameCol = new TreeColumn(propTable, SWT.LEFT, 0);
 		nameCol.setText(colNames[0]);
 		nameCol.setWidth(120);
 		nameCol.setResizable(true);
 
-		TableColumn typeCol = new TableColumn(table, SWT.CENTER, 1);
+		TreeColumn typeCol = new TreeColumn(propTable, SWT.CENTER, 1);
 		typeCol.setText(colNames[1]);
 		typeCol.setResizable(true);
 		typeCol.setWidth(150);
 
-		TableColumn valueCol = new TableColumn(table, SWT.RIGHT, 2);
+		TreeColumn valueCol = new TreeColumn(propTable, SWT.RIGHT, 2);
 		valueCol.setText(colNames[2]);
 		valueCol.setResizable(true);
 		valueCol.setWidth(75);
 
-		table.addMouseListener(new PropertiesMouseListener());
+		propTable.addMouseListener(new PropertiesMouseListener());
 
 		FormData frmData = new FormData();
 		frmData.top = new FormAttachment(11, 5);
@@ -483,7 +482,7 @@ public class PropertiesView extends ViewPart {
 
 			propTable.removeAll();
 
-			TableColumn[] tcols = propTable.getTable().getColumns();
+			TreeColumn[] tcols = propTable.getColumns();
 			tcols[1].setText("Value");
 			tcols[2].setText("Data Type");
 
@@ -571,28 +570,28 @@ public class PropertiesView extends ViewPart {
 			// sort separately
 			AttrComparator attrComp = new AttrComparator();
 			Collections.sort(attrLst, attrComp);
-			TableTreeItem ttiStd = new TableTreeItem(propTable, SWT.NONE);
+			TreeItem ttiStd = new TreeItem(propTable, SWT.NONE);
 			ttiStd.setText("Standard");
 
 			this.addTreeItems(ttiStd, attrLst);
 
 			Collections.sort(custAttrLst, attrComp);
-			TableTreeItem ttiCust = new TableTreeItem(propTable, SWT.NONE);
+			TreeItem ttiCust = new TreeItem(propTable, SWT.NONE);
 			ttiCust.setText("Custom");
 			addTreeItems(ttiCust, custAttrLst);
 
 			Collections.sort(sysAttrLst, attrComp);
-			TableTreeItem ttiSys = new TableTreeItem(propTable, SWT.NONE);
+			TreeItem ttiSys = new TreeItem(propTable, SWT.NONE);
 			ttiSys.setText("System");
 			addTreeItems(ttiSys, sysAttrLst);
 
 			Collections.sort(appAttrLst, attrComp);
-			TableTreeItem ttiApp = new TableTreeItem(propTable, SWT.NONE);
+			TreeItem ttiApp = new TreeItem(propTable, SWT.NONE);
 			ttiApp.setText("Application");
 			addTreeItems(ttiApp, appAttrLst);
 
 			Collections.sort(intAttrLst, attrComp);
-			TableTreeItem ttiInt = new TableTreeItem(propTable, SWT.NONE);
+			TreeItem ttiInt = new TreeItem(propTable, SWT.NONE);
 			ttiInt.setText("Internal");
 			addTreeItems(ttiInt, intAttrLst);
 			// propTable.pack();
@@ -648,7 +647,7 @@ public class PropertiesView extends ViewPart {
 
 			propTable.removeAll();
 			for (int i = 0; i < typeColNames.length; i++) {
-				propTable.getTable().getColumn(i).setText(typeColNames[i]);
+				propTable.getColumn(i).setText(typeColNames[i]);
 			}
 
 			addToBox(typeName);
@@ -697,27 +696,27 @@ public class PropertiesView extends ViewPart {
 
 			AttrComparator attrComp = new AttrComparator();
 			Collections.sort(attrLst, attrComp);
-			TableTreeItem ttiStd = new TableTreeItem(propTable, SWT.NONE);
+			TreeItem ttiStd = new TreeItem(propTable, SWT.NONE);
 			ttiStd.setText("Standard");
 			this.addTreeItems(ttiStd, attrLst);
 
 			Collections.sort(custAttrLst, attrComp);
-			TableTreeItem ttiCust = new TableTreeItem(propTable, SWT.NONE);
+			TreeItem ttiCust = new TreeItem(propTable, SWT.NONE);
 			ttiCust.setText("Custom");
 			addTreeItems(ttiCust, custAttrLst);
 
 			Collections.sort(sysAttrLst, attrComp);
-			TableTreeItem ttiSys = new TableTreeItem(propTable, SWT.NONE);
+			TreeItem ttiSys = new TreeItem(propTable, SWT.NONE);
 			ttiSys.setText("System");
 			addTreeItems(ttiSys, sysAttrLst);
 
 			Collections.sort(appAttrLst, attrComp);
-			TableTreeItem ttiApp = new TableTreeItem(propTable, SWT.NONE);
+			TreeItem ttiApp = new TreeItem(propTable, SWT.NONE);
 			ttiApp.setText("Application");
 			addTreeItems(ttiApp, appAttrLst);
 
 			Collections.sort(intAttrLst, attrComp);
-			TableTreeItem ttiInt = new TableTreeItem(propTable, SWT.NONE);
+			TreeItem ttiInt = new TreeItem(propTable, SWT.NONE);
 			ttiInt.setText("Internal");
 			addTreeItems(ttiInt, intAttrLst);
 
@@ -1062,7 +1061,7 @@ public class PropertiesView extends ViewPart {
 		copyAction = new Action("Copy") {
 			public void run() {
 
-				TableTreeItem[] selItems = propTable.getSelection();
+				TreeItem[] selItems = propTable.getSelection();
 				if (selItems.length == 0) {
 					return;
 				} else {
@@ -1101,7 +1100,7 @@ public class PropertiesView extends ViewPart {
 	}
 
 	private String getSelectedAttr() {
-		TableTreeItem ti[] = propTable.getSelection();
+		TreeItem ti[] = propTable.getSelection();
 		if (ti.length > 0) {
 			String val = ti[0].getText(0);
 			return val;
@@ -1110,7 +1109,7 @@ public class PropertiesView extends ViewPart {
 	}
 
 	public AttrInfo getSelection() {
-		TableTreeItem ti[] = propTable.getSelection();
+		TreeItem ti[] = propTable.getSelection();
 		if (ti.length > 0) {
 			return (AttrInfo) ti[0].getData(ATTR_KEY);
 		}
@@ -1118,9 +1117,9 @@ public class PropertiesView extends ViewPart {
 	}
 
 	private void updateCurrentSelection(AttrInfo ai) {
-		TableTreeItem[] ti = propTable.getSelection();
+		TreeItem[] ti = propTable.getSelection();
 		if (ti.length > 0) {
-			TableTreeItem selItem = ti[0];
+			TreeItem selItem = ti[0];
 			selItem.setText(0, ai.getName());
 			if (ai.isObject()) {
 				if (ai.isRepeating()) {
@@ -1140,7 +1139,7 @@ public class PropertiesView extends ViewPart {
 	}
 
 	public AttrInfo[] getMultiSelection() {
-		TableTreeItem ti[] = propTable.getSelection();
+		TreeItem ti[] = propTable.getSelection();
 		if (ti.length > 0) {
 			ArrayList lst = new ArrayList(ti.length);
 			for (int i = 0; i < ti.length; i++) {
@@ -1189,18 +1188,18 @@ public class PropertiesView extends ViewPart {
 
 				FileWriter fw = new FileWriter(fl);
 
-				TableTreeItem[] ti = propTable.getItems();
+				TreeItem[] ti = propTable.getItems();
 				String lineSep = System.getProperty("line.separator");
 				for (int i = 0; i < ti.length; i++) {
 
-					TableTreeItem t = ti[i];
+					TreeItem t = ti[i];
 					String line = t.getText(0) + lineSep;
 					fw.write(line);
 
-					TableTreeItem[] childs = t.getItems();
+					TreeItem[] childs = t.getItems();
 
 					for (int j = 0; j < childs.length; j++) {
-						TableTreeItem child = childs[j];
+						TreeItem child = childs[j];
 						StringBuffer lineBuf = new StringBuffer(32);
 						lineBuf.append("\"");
 						lineBuf.append(child.getText(0));
@@ -1284,11 +1283,11 @@ public class PropertiesView extends ViewPart {
 		}
 	}
 
-	private void addTreeItems(TableTreeItem parent, ArrayList attrLst) {
+	private void addTreeItems(TreeItem parent, ArrayList attrLst) {
 		for (int i = 0; i < attrLst.size(); i++) {
 			AttrInfo ai = (AttrInfo) attrLst.get(i);
 
-			TableTreeItem ti = new TableTreeItem(parent, SWT.NONE);
+			TreeItem ti = new TreeItem(parent, SWT.NONE);
 			ti.setText(0, ai.getName());
 			if (ai.isObject()) {
 				if (ai.isRepeating()) {

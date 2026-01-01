@@ -14,9 +14,9 @@ Contributors:
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>eclipse-2020-06</artifactId>
+	<artifactId>eclipse-2023-06</artifactId>
 	<packaging>eclipse-target-definition</packaging>
-	<name>Eclipse 2020-06 Target Definition</name>
+	<name>Eclipse 2023-06 Target Definition</name>
 
 	<parent>
 		<artifactId>parent</artifactId>

@@ -11,6 +11,7 @@ Require-Bundle: org.eclipse.ui,
  com.documentum.dfc,
  com.documentum.devprog.eclipsePlugin
 Eclipse-LazyStart: true
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: bsh,
  bsh.classpath,
  bsh.collection,

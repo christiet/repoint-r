@@ -44,9 +44,10 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 import org.apache.log4j.PropertyConfigurator;
-import org.eclipse.core.runtime.IPluginDescriptor;
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.Bundle;
 import org.osgi.service.prefs.Preferences;
 
 /**
@@ -131,7 +132,8 @@ public class DevprogPlugin extends AbstractUIPlugin {
 	protected void configureLog4j() {
 
 		try {
-			URL installURL = getDefault().getDescriptor().getInstallURL();
+			Bundle bundle = getDefault().getBundle();
+			URL installURL = FileLocator.resolve(bundle.getEntry("/"));
 			URL url = new URL(installURL, "config/log4j.properties");
 			// url = Platform.r
 			PropertyConfigurator.configure(url);

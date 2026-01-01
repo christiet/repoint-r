@@ -10,6 +10,12 @@ Require-Bundle: org.eclipse.core.runtime,
  com.documentum.dfc;bundle-version="0.1.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-11
+Import-Package: javax.xml.parsers,
+ javax.xml.transform,
+ javax.xml.transform.dom,
+ javax.xml.transform.stream,
+ org.w3c.dom,
+ org.xml.sax
 Bundle-Vendor: Eclipse.org
 Export-Package: com.documentum.devprog.common,
  com.documentum.devprog.eclipse,

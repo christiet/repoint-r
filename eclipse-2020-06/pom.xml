@@ -14,9 +14,9 @@ Contributors:
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>helios</artifactId>
+	<artifactId>eclipse-2020-06</artifactId>
 	<packaging>eclipse-target-definition</packaging>
-	<name>RCP Example Target Definition</name>
+	<name>Eclipse 2020-06 Target Definition</name>
 
 	<parent>
 		<artifactId>parent</artifactId>

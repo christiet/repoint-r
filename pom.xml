@@ -20,7 +20,7 @@ Contributors:
 	<name>RCP Parent</name>
 
 	<properties>
-		<tycho-version>0.23.1</tycho-version>
+		<tycho-version>2.7.5</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -30,11 +30,17 @@ Contributors:
 		<module>com.documentum.feature</module>
 		<module>com.documentum.dfc</module>
 		<module>com.emc.repoint.scripts</module>
-		<module>helios</module>
+		<module>eclipse-2020-06</module>
 	</modules>
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
@@ -43,7 +49,7 @@ Contributors:
 					<target>
 						<artifact>
 							<groupId>repoint</groupId>
-							<artifactId>helios</artifactId>
+							<artifactId>eclipse-2020-06</artifactId>
 							<version>1.0.0-SNAPSHOT</version>
 						</artifact>
 					</target>
@@ -51,26 +57,15 @@ Contributors:
 						<environment>
 							<os>win32</os>
 							<ws>win32</ws>
-							<arch>x86</arch>
+							<arch>x86_64</arch>
 						</environment>
 						<environment>
 							<os>linux</os>
 							<ws>gtk</ws>
 							<arch>x86_64</arch>
 						</environment>
-<!--						<environment>
-							<os>macosx</os>
-							<ws>cocoa</ws>
-							<arch>x86_64</arch>
-						</environment>-->
 					</environments>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<extensions>true</extensions>
 			</plugin>
 		</plugins>
 	</build>

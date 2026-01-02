@@ -10,8 +10,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  com.documentum.dfc,
  com.documentum.devprog.eclipsePlugin
-Eclipse-LazyStart: true
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: bsh,
  bsh.classpath,
  bsh.collection,
@@ -20,5 +20,5 @@ Export-Package: bsh,
  bsh.reflect,
  bsh.servlet,
  bsh.util
-Bundle-ClassPath: lib/bsh-2.0b4.jar,
+Bundle-ClassPath: lib/bsh-2.1.1.jar,
  .

@@ -302,7 +302,8 @@ public class ObjectBrowserShell implements ISelectionChangedListener,SelectionLi
     {
         ArrayList arraylist = new ArrayList(collection);
         String as[] = (String[])arraylist.toArray(new String[0]);
-        return StringUtil.bubbleSort(as);
+        Arrays.sort(as);
+        return as;
     }
 	
 

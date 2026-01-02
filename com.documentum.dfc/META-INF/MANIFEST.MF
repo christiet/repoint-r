@@ -680,5 +680,5 @@ Export-Package: app.macbinary,
  xtrim.util.pattern,
  xtrim.webservice,
  xtrim.widget
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Eclipse-BundleShape: dir

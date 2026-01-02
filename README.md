@@ -1,26 +1,51 @@
-# repoint-r
-Documentum Repoint "resurrected".
+# Repoint-R
 
-NEWS
+Repoint-R is a desktop application for browsing and managing Documentum repositories. It provides a graphical interface for executing DQL queries, browsing the repository structure, viewing object properties, and performing common operations like check-in/check-out.
 
-*"Add External Docbroker" in the login window. In this way it is now possible to add a docbase from a different docbroker than defined in dfc.properties. It is also possible to add docbases even without dfc.properties. All without quitting and starting up repoint again.
+## Features
 
-Older NEWS:
+- **Repository Browser** - Navigate cabinets, folders and documents
+- **DQL Query Editor** - Execute queries with results viewer
+- **Object Properties** - View and edit object attributes
+- **ACL Viewer** - Inspect access control lists
+- **Check-in/Check-out** - Content management operations
+- **External Docbroker** - Connect to docbrokers not in dfc.properties
 
-* Project finally compiles and should work exactly the same as the last repoint version available from the original Author.
-* File selector was added to the Checkin window that allows selecting a file to check in.
-* Simple ACL viewer was added to the Docbrowser and to the DQL results view.
+## Requirements
 
-Goal of this project is to:
+- Java 17 or later
+- Documentum DFC libraries (from your Content Server or client installation)
+- dfc.properties configured for your environment (optional - can add docbrokers at runtime)
 
-* make the build process as simple as possible - convert native Eclipse RCP project to Eclipse Tycho (done)
-* update repoint so it works with Java 1.7+ (done)
-* add support for editing ACLs
-* add Trusted Content Services support
-* add support for creating sessions without need of modifying dfc.properties
-* if possible update RCP code and remove deprecated fragments (in progress...)
-* ...
+## Quick Start
 
-* fix bugs 
+See [BUILD.md](BUILD.md) for detailed build and installation instructions.
 
+```bash
+# Build
+mvn clean package
 
+# Run (after extracting and adding DFC JARs)
+./repoint
+```
+
+## Screenshots
+
+*Coming soon*
+
+## History
+
+This is a modernised fork of the original Repoint application:
+
+- Upgraded to **Eclipse 2023-06** platform
+- Upgraded to **Tycho 4.0.4** build system
+- Updated to **Java 17** runtime
+- Fixed deprecated Eclipse API usage
+
+## License
+
+Eclipse Public License v1.0
+
+## Credits
+
+Original Repoint application by EMC Developer Network (2006).
